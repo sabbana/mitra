@@ -1,0 +1,53 @@
+/* your styles go here */
+
+.navigation{
+	border-right:solid 1px #EEE;
+}
+
+ul.navigation{
+	margin:0;
+	padding:0;
+}
+
+ul.navigation li{
+	list-style:none;
+}
+
+ul.navigation a{
+	display:block;
+	padding:10px;
+	border-bottom:solid 1px #EEE;
+	text-decoration:none;
+	font-style:normal;
+}
+
+li.current a{
+	background:#FF4444;
+	color:#FFF;
+}
+.info{
+	font-style:normal;
+}
+.info th{
+	font-size:12px;
+	font-weight:normal;
+	color:#888;
+	padding-top:10px;
+}
+.toolbar{
+	padding:8px;
+	border-bottom:solid 1px #DDD;
+	margin-bottom:10px;
+}
+.logo{
+	text-align:center;
+	margin-bottom:20px;
+}
+.logo:hover{
+	opacity:0.8;
+	cursor:pointer;
+}
+.img{
+	padding:3px;
+	border:solid 1px #DDD;
+}
