@@ -36,7 +36,7 @@
 								<td>
 									<span class="btn-group">
 										<a href="<?php echo base_url().'inside/activity/edit/'.$keg['id'];?>" class="btn btn-default" title="Edit"><i class="fa fa-edit"></i></a>
-										<a href="#" class="btn btn-default" title="Hapus"><i class="fa fa-trash"></i></a>
+										<a href="#" onclick="return singleDelete('<?php echo $keg['id'];?>')" data-toggle="modal" data-target="#modalHapus" class="btn btn-default" title="Hapus"><i class="fa fa-trash"></i></a>
 									</span>
 								</td>
 							</tr>
@@ -48,4 +48,26 @@
 			</div>	
 		</div>		
 	</div>
+</div>
+
+<div id="modalHapus" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title heading"><i class="fa fa-calendar"></i> Hapus Kegiatan</h4>
+      </div>
+	  <form method="POST" action="<?php echo base_url().'inside/delete_activity';?>">
+		<input type="hidden" name="id" id="iddelete">
+		  <div class="modal-body">
+			<div class="msg">Apakah Anda yakin ingin menghapus data kegiatan Komunitas?</div>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+			<input type="submit" name="submit" class="btn btn-danger" value="Hapus">
+		  </div>
+	  </form>
+    </div>
+  </div>
 </div>

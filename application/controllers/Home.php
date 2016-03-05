@@ -132,9 +132,19 @@ class Home extends CI_Controller {
 		echo $opt;
 	}
 	
-	public function list_communities(){
+	public function list_communities($id = ''){
 		$this->data['page'] = 'home/list';
 		$this->data['community'] = $this->model->getAllCommunity();
+		if($id !== ''){
+			$this->data['page'] = 'home/detail_komunitas';
+			$this->data['community'] = $this->model->currentCommunity($id);
+			if(empty($this->data['community'])){
+				redirect('community');
+			}
+			$this->data['kegiatan'] = $this->model->activities($id);
+			$this->data['rekening'] = $this->model->getRekening($id);
+			$this->data['kebutuhan'] = $this->model->requirement($id);
+		}
 		$this->load->view('template', $this->data);
 	}
 

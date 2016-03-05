@@ -54,6 +54,8 @@ $route['join'] = 'home/join';
 $route['login'] = 'home/login';
 
 $route['community'] = 'home/list_communities';
+$route['community/(:any)'] = 'home/list_communities/$1';
+
 $route['404_override'] = '_404';
 
 $route['translate_uri_dashes'] = FALSE;

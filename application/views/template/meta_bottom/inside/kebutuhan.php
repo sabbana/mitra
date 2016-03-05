@@ -10,8 +10,8 @@
 		});
 	});
 	
-	function singleDelete(id){
-		$("#iddelete").val(id);
+	function changeStatus(id){
+		$("#idchange").val(id);
 	}
 		
 </script>

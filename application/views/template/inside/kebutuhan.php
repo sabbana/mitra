@@ -32,7 +32,7 @@
 								<td width="100">
 									<span class="btn-group">
 										<a href="<?php echo base_url().'inside/requirement/edit/'.$keb['id'];?>" class="btn btn-default" title="Edit"><i class="fa fa-edit"></i></a>
-										<a href="<?php echo base_url().'inside/changeStatus/'.$keb['id'];?>" class="btn btn-default" title="Ubah Status"><i class="fa fa-check"></i></a>
+										<a href="#" data-toggle="modal" data-target="#modalChange" title="Terpenuhi" class="btn btn-default" title="Ubah Status" onclick="return changeStatus('<?php echo $keb['id'];?>')"><i class="fa fa-check"></i></a>
 									</span>
 								</td>
 							</tr>
@@ -44,4 +44,25 @@
 			</div>	
 		</div>		
 	</div>
+</div>
+<div id="modalChange" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title heading"><i class="fa fa-money"></i> Kebutuhan Telah Terpenuhi</h4>
+      </div>
+	  <form method="POST" action="<?php echo base_url().'inside/update_requirement/status';?>">
+		<input type="hidden" name="id" id="idchange">
+		  <div class="modal-body">
+			<div class="msg">Apakah Anda ingin mengubah status kebutuhan komunitas?</div>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+			<input type="submit" name="submit" class="btn btn-success" value="Terpenuhi">
+		  </div>
+	  </form>
+    </div>
+  </div>
 </div>

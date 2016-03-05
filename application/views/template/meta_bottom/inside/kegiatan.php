@@ -9,5 +9,9 @@
 			scrollX : false,
 		});
 	});
-		
+	
+	function singleDelete(id){
+		$("#iddelete").val(id);
+	}
+	
 </script>

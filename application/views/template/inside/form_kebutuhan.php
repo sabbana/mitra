@@ -12,10 +12,10 @@
 						$name = '';
 						$desc = '';
 						$action = 'create_requirement';
-						if(!empty($kegiatan)){
-							$id = $kegiatan[0]['id'];
-							$name = $kegiatan[0]['name'];
-							$desc = $kegiatan[0]['description'];
+						if(!empty($kebutuhan)){
+							$id = $kebutuhan[0]['id'];
+							$name = $kebutuhan[0]['name'];
+							$desc = $kebutuhan[0]['description'];
 							$action = 'update_requirement';
 						}
 					?>

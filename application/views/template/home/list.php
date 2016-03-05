@@ -14,7 +14,7 @@
 				<?php if(!empty($community)){ foreach ($community as $com){ if($com['id'] != 7){ ?>
 					<tr>
 						<td>
-							<img src="<?php echo $com['logo'] ? $com['logo']:base_url().'assets/img/default_logo.png';?>" class="pull-left" width="150" style="margin:0 10px 10px 0">
+							<a href="<?php echo base_url().'community/'.$com['id'];?>"><img src="<?php echo $com['logo'] ? $com['logo']:base_url().'assets/img/default_logo.png';?>" class="pull-left" width="150" style="margin:0 10px 10px 0"></a>
 							<?php echo "<h4>".$com['name']."</h4>".$com['description'];?>
 							<hr/>
 							<ul style="list-style:none;margin:0; padding:0">
@@ -24,7 +24,7 @@
 								<li><i class="fa fa-globe"></i> Website : <?php echo $com['website'] ? '<a target="_blank" href="'.$com['website'].'">'.$com['website'].'</a>':'---';?></li>
 							</ul>
 						</td>
-						<td><?php echo $com['nama_bidang'];?></td>
+						<td><span class="badge"><?php echo $com['nama_bidang'];?></span></td>
 					</tr>
 				</tbody>
 				<?php }}} ?>

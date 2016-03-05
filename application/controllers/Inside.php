@@ -206,10 +206,11 @@ class Inside extends CI_Controller {
 	public function requirement($param = '', $id = ''){
 		$this->data['title'] = "Kebutuhan Komunitas";
 		$this->data['page'] = 'inside/kebutuhan';
-		if($param != null)
-			$this->data['page'] = 'inside/form_kebutuhan';
-		
 		$this->data['kebutuhan'] = $this->model->requirement($this->session->userdata('id'));
+		if($param != null){
+			$this->data['page'] = 'inside/form_kebutuhan';
+			$this->data['kebutuhan'] = $this->model->current_requirement($id);
+		}
 		$this->load->view('template', $this->data);
 	}
 	
@@ -226,6 +227,27 @@ class Inside extends CI_Controller {
 		else
 			$this->session->set_flashdata('error','Terjadi kesalahan sistem saat menyimpan data');
 		redirect('inside/activity');
+	}
+	
+	public function update_requirement($param = ''){
+		$id = $this->input->post('id');
+		$data = array(
+			'name'			=> $this->security->xss_clean($this->input->post('name')),
+			'description'	=> $this->security->xss_clean($this->input->post('description')),
+		);
+		
+		if($param == 'status'){
+			$data = array(
+				'status'	=> 1
+			);	
+		}
+		
+		$act = $this->model->update_requirement($id, $data);
+		if($act)
+			$this->session->set_flashdata('success','Kebutuhan komunitas telah diupdate.');
+		else
+			$this->session->set_flashdata('error','Terjadi kesalahan sistem saat menyimpan data');
+		redirect('inside/requirement');
 	}
 	
 	# upload

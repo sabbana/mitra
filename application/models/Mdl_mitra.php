@@ -120,10 +120,19 @@ class Mdl_mitra extends CI_Model{
 		return $this->db->query($sql)->result_array();
 	}
 	
+	public function current_requirement($id){
+		$sql = "select * from community_requirement where id = '$id'";
+		return $this->db->query($sql)->result_array();
+	}
+
 	public function save_requirement($data){
 		return $this->db->insert('community_requirement', $data);
 	}
 
+	public function update_requirement($id, $data){
+		$this->db->where('id', $id);
+		return $this->db->update('community_requirement', $data);
+	}
 	
 	# model region
 	# ================================
