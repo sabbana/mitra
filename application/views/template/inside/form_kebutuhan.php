@@ -10,11 +10,13 @@
 						# data rekening
 						$id = '';
 						$name = '';
+						$jenis = '';
 						$desc = '';
 						$action = 'create_requirement';
 						if(!empty($kebutuhan)){
 							$id = $kebutuhan[0]['id'];
 							$name = $kebutuhan[0]['name'];
+							$jenis = $kebutuhan[0]['jenis_kebutuhan'];
 							$desc = $kebutuhan[0]['description'];
 							$action = 'update_requirement';
 						}
@@ -34,6 +36,15 @@
 							<div class="form-group">
 								<label>Nama Kebutuhan <span>*</span></label>
 								<input type="text" name="name" class="form-control" placeholder="Ex : Mesin Jahit, Alat Peraga, SDM dll" value="<?php echo $name;?>" required>
+							</div>
+							<div class="form-group">
+								<label>Jenis Kebutuhan <span>*</span></label>
+								<select name="jenis_kebutuhan" class="form-control select" required>
+									<option value="0" <?php echo $jenis == 0? 'selected':'';?>>Dana</option>
+									<option value="1" <?php echo $jenis == 1? 'selected':'';?>>Barang</option>
+									<option value="2" <?php echo $jenis == 2? 'selected':'';?>>Volunteer</option>
+									<option value="3" <?php echo $jenis == 3? 'selected':'';?>>Lainnya</option>
+								</select>
 							</div>
 							<div class="form-group">
 								<label>Keterangan <span>*</span></label>

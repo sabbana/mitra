@@ -35,4 +35,13 @@ function generatePassword($length, $strength){
     }
     return $password;
 }
+
+function generate_code_mitra($count){
+	$count = sprintf("%04d",$count);
+	$string = 'MIBF'.date('Y').$count;
+	return $string;
+}
+
+
+
 ?>

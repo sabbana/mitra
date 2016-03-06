@@ -10,7 +10,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="<?php echo $this->uri->segment(1) != null ? '':'active';?>"><a href="<?php echo base_url();?>#intro">Home</a></li>
                 <?php if ($this->uri->segment(1) == null){?>
-                <li><a href="#about">Tentang Mitra Komunitas </a></li>
+                <li><a href="#about">Tentang</a></li>
                 <li><a href="#services">Manfaat</a></li>
                 <li><a href="#mitra">Mitra Komunitas</a></li>
                 <li><a href="#contact">Kontak</a></li>

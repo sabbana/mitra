@@ -13,5 +13,6 @@
 	function changeStatus(id){
 		$("#idchange").val(id);
 	}
+	
 		
 </script>

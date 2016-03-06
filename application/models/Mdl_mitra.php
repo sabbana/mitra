@@ -39,6 +39,12 @@ class Mdl_mitra extends CI_Model{
 				where a.id = '$id'";
 		return $this->db->query($sql)->result_array();
 	}
+	
+	public function count_mitra_per_year(){
+		$sql = "select id from community where YEAR(date_input) = YEAR(current_date)";
+		$count = $this->db->query($sql)->num_rows();
+		return $count;
+	}
 
 	public function save_community($data){
 		return $this->db->insert('community', $data);

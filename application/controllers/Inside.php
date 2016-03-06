@@ -218,6 +218,7 @@ class Inside extends CI_Controller {
 		$data = array(
 			'community_id'	=> $this->session->userdata('id'),
 			'name'			=> $this->security->xss_clean($this->input->post('name')),
+			'type'			=> $this->security->xss_clean($this->input->post('type')),
 			'description'	=> $this->security->xss_clean($this->input->post('description')),
 			'date_input'	=> date('Y-m-d H:i:s')
 		);
@@ -226,13 +227,14 @@ class Inside extends CI_Controller {
 			$this->session->set_flashdata('success','Kegiatan <b>'.$data['name'].'</b> telah ditambahkan.');
 		else
 			$this->session->set_flashdata('error','Terjadi kesalahan sistem saat menyimpan data');
-		redirect('inside/activity');
+		redirect('inside/requirement');
 	}
 	
 	public function update_requirement($param = ''){
 		$id = $this->input->post('id');
 		$data = array(
 			'name'			=> $this->security->xss_clean($this->input->post('name')),
+			'type'	=> $this->security->xss_clean($this->input->post('type')),
 			'description'	=> $this->security->xss_clean($this->input->post('description')),
 		);
 		

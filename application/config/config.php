@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 // $config['base_url'] = 'http://mitra.ilmuberbagi.or.id/';
-$config['base_url'] = 'http://localhost/mitra/';
+$config['base_url'] = 'http://localhost/IBF/mitra/';
 
 /*
 |--------------------------------------------------------------------------

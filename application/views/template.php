@@ -61,6 +61,7 @@
 			$(".link").click(function(){
 				window.location.href = $(".link > a").attr('href');
 			});
+			$(".select").select2();
 		});
 	</script>
     <script src="<?php echo base_url().'assets/js/jquery.sticky.js';?>"></script>

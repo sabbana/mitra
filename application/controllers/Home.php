@@ -34,7 +34,7 @@ class Home extends CI_Controller {
 		$this->data['propinsi'] = $this->model->getPropinsi();
 		$this->load->view('template', $this->data);
 	}
-
+	
 	public function registration(){
 
 		$email = $this->input->post('email_active');
@@ -43,7 +43,9 @@ class Home extends CI_Controller {
 		$newDate = str_replace('/','-', $date);
 		$this->load->helper('misc');
 		$pass = generatePassword(8,4);
-
+		
+		$count = $this->model->count_mitra_per_year();
+		
 		$data = array(
 			"name"	=> $this->input->post('name'),
 			"type"	=> $this->input->post('type'),
@@ -62,8 +64,9 @@ class Home extends CI_Controller {
 			"facebook" => $this->input->post('facebook'),
 			"twitter" => $this->input->post('twitter'),
 			"googleplus" => $this->input->post('google'),
-			"username" => substr(str_replace(array(' ','komunitas','Komunitas'),'', trim(strtolower($this->input->post('name')))), 0, 8),
+			"username" => generate_code_mitra($count+1),
 			"password" => md5($pass),
+			"date_input" => date('Y-m-d H:i:s'),
 		);
 		
 		# check file input logo
@@ -146,6 +149,12 @@ class Home extends CI_Controller {
 			$this->data['kebutuhan'] = $this->model->requirement($id);
 		}
 		$this->load->view('template', $this->data);
+	}
+	
+	public function test(){
+		$count = 12;
+		$this->load->helper("misc");
+		echo generate_code_mitra($count);
 	}
 
 }
