@@ -147,24 +147,45 @@ class Home extends CI_Controller {
 		echo $opt;
 	}
 	
-	public function list_communities($id = ''){
+	public function list_communities($userid = ''){
 		$this->data['page'] = 'home/list';
 		$this->data['community'] = $this->model->getAllCommunity();
-		if($id !== ''){
+		
+		$marker = $this->model->getGeocommunity();
+		$listMarker = array();
+		if(!empty($marker)){
+			$x = 0;
+			foreach ($marker as $m){
+				$desc = '<div class="geotitle"><a href="'.base_url().'community/'.$m['username'].'">'.$m['name'].'</a></div><div class="geocontent">'.$m['address'].'</div>';
+				$listMarker[$x] = array(
+					$m['lat'], $m['long'], $desc
+				);
+				$x++;
+			}
+		}
+		$this->data['listMarker'] = json_encode($listMarker);
+		
+		$this->data['kegiatan'] = $this->model->activities();
+		$this->data['kebutuhan'] = $this->model->requirement();
+		$this->data['agenda'] = $this->model->agenda();
+		
+		if($userid !== ''){
+			$id = $this->model->getIdfromUsername($userid);
 			$this->data['page'] = 'home/detail_komunitas';
-			$this->data['community'] = $this->model->currentCommunity($id);
+			$this->data['community'] = $this->model->currentCommunity($userid);
 			if(empty($this->data['community'])){
 				redirect('community');
 			}
-			$this->data['kegiatan'] = $this->model->activities($id);
 			$this->data['rekening'] = $this->model->getRekening($id);
+			$this->data['kegiatan'] = $this->model->activities($id);
 			$this->data['kebutuhan'] = $this->model->requirement($id);
 		}
 		$this->load->view('template', $this->data);
 	}
 	
-	public function test(){
-		$this->data['page'] = 'home/geosample';
+	public function donate($userid){
+		$this->data['page'] = 'home/donate';
+		$this->data['community'] = $this->model->currentCommunity($userid);
 		$this->load->view('template', $this->data);
 	}
 

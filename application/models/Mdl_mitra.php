@@ -30,6 +30,12 @@ class Mdl_mitra extends CI_Model{
 		return $this->db->query($sql)->result_array();
 	}
 	
+	public function getIdfromUsername($username){
+		$sql = "select id from community where username='$username'";
+		$data = $this->db->query($sql)->result_array();
+		return $data[0]['id'];
+	}
+	
 	public function currentCommunity($id){
 		$sql = "select a.*, b.provinsi_nama, c.kokab_nama, d.nama_kecam, e.nama_bidang from community a 
 				left join propinsi b on a.region = b.provinsi_id
@@ -56,6 +62,14 @@ class Mdl_mitra extends CI_Model{
 		return $this->db->insert('geocommunity', $data);
 	}
 
+	public function getGeocommunity(){
+		$sql = "select a.*, b.name, b.address, b.username from geocommunity a 
+				left join community b on a.community_id = b.id 
+				order by a.last_modified DESC";
+		return $this->db->query($sql)->result_array();
+	}
+	
+	
 	public function update_community($id, $data){
 		$this->db->where('id', $id);
 		return $this->db->update('community', $data);
@@ -66,7 +80,7 @@ class Mdl_mitra extends CI_Model{
 	public function getRekening($id = null){
 		$sql = "select a.*, b.name as nama_komunitas from community_account a left join community b on a.community_id = b.id order by date_input DESC";
 		if($id != null)		
-			$sql = "select a.*, b.name as nama_komunitas from community_account a left join community b on a.community_id = b.id where community_id = '$id' order by date_input DESC";
+			$sql = "select a.*, b.name as nama_komunitas from community_account a left join community b on a.community_id = b.id where username = '$id' order by date_input DESC";
 		
 		return $this->db->query($sql)->result_array();
 	}
@@ -118,17 +132,19 @@ class Mdl_mitra extends CI_Model{
 		return $this->db->delete('daily_activity');
 	}
 
-	public function agenda($id){
-		$sql = "select * from daily_activity where community_id = '$id' and date_start > CURRENT_DATE order by date_start ASC";
+	public function agenda($id = ''){
+		$sql = "select * from daily_activity where date_start > CURRENT_DATE order by date_start ASC";
+		if($id !== '')
+			$sql = "select * from daily_activity where community_id = '$id' and date_start > CURRENT_DATE order by date_start ASC";
 		return $this->db->query($sql)->result_array();
 	}
 	
 	# model requirement
 	# ================================
 	public function requirement($id = null){
-		$sql = "select a.*, b.name as nama_komunitas from community_requirement a left join community b on a.community_id = b.id order by date_input DESC";
+		$sql = "select a.*, b.name as nama_komunitas, b.username from community_requirement a left join community b on a.community_id = b.id order by date_input DESC";
 		if($id !== null)
-			$sql = "select a.*, b.name as nama_komunitas from community_requirement a left join community b on a.community_id = b.id where community_id = '$id'";
+			$sql = "select a.*, b.name as nama_komunitas, b.username from community_requirement a left join community b on a.community_id = b.id where community_id = '$id'";
 		return $this->db->query($sql)->result_array();
 	}
 	

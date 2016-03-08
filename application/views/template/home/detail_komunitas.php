@@ -74,34 +74,35 @@
 								</div>
 							</div>
 							
-							<div class="col-md-12">
+							<div class="col-md-6">
 								<h6 class=""><i class="fa fa-calendar"></i> Agenda Kegiatan <?php echo $community[0]['name'];?></h6>
-								<?php if(!empty($kegiatan)){ foreach($kegiatan as $keg){?>
-									<div class="col-md-4">
-										<div class="well">
+								<ul class="list-group">
+									<?php if(!empty($kegiatan)){ foreach($kegiatan as $keg){?>
+										<li class="list-group-item">
 											<h6 class=""><?php echo $keg['name'];?></h6>
 											<small><?php echo $keg['description'];?></small>
 											<br/><small><i class="fa fa-calendar"></i> <?php echo date('d/m/Y', strtotime($keg['date_start']));?>
 											&nbsp; s/d &nbsp;
 											<i class="fa fa-calendar"></i> <?php echo date('d/m/Y', strtotime($keg['date_end']));?></small>
-										</div>
-									</div>
-								<?php }}else{?>
-								Belum ada agenda ...
-								<?php } ?>
+										</li>
+									<?php }}else{?>
+										<li class="list-group-item">Belum ada kegiatan ...</li>
+									<?php } ?>
+								</ul>
 							</div>
-							<div class="col-md-12">
+							<div class="col-md-6">
 								<h6 class=""><i class="fa fa-cubes"></i> Kebutuhan <?php echo $community[0]['name'];?> saat ini</h6>
-								<?php if(!empty($kebutuhan)){ foreach($kebutuhan as $keb){?>
-									<div class="col-md-4">
-										<div class="thumbnail" style="padding:10px">
-											<h6 class="title"><?php echo $keb['name'];?></h6>
-											<small><?php echo $keb['description'];?></small>
-										</div>
-									</div>
-								<?php }}else{?>
-								Belum ada kebutuhan ...
+								<ul class="list-group">
+									<?php if(!empty($kebutuhan)){ foreach($kebutuhan as $keb){?>
+									<li class="list-group-item">
+										<div class="title"><i class="fa fa-arrow-circle-right"></i> 
+										<?php echo $keb['name'];?></div>
+										<small><?php echo $keb['description'];?></small>
+									</li>
+									<?php }}else{?>
+									<li class="list-group-item">Belum ada kebutuhan ...</li>
 								<?php } ?>
+								</ul>
 							</div>
 						</div>
 					</div>
