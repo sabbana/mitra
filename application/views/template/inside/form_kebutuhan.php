@@ -16,7 +16,7 @@
 						if(!empty($kebutuhan)){
 							$id = $kebutuhan[0]['id'];
 							$name = $kebutuhan[0]['name'];
-							$jenis = $kebutuhan[0]['jenis_kebutuhan'];
+							$jenis = $kebutuhan[0]['type'];
 							$desc = $kebutuhan[0]['description'];
 							$action = 'update_requirement';
 						}
@@ -39,7 +39,7 @@
 							</div>
 							<div class="form-group">
 								<label>Jenis Kebutuhan <span>*</span></label>
-								<select name="jenis_kebutuhan" class="form-control select" required>
+								<select name="type" class="form-control select" required>
 									<option value="0" <?php echo $jenis == 0? 'selected':'';?>>Dana</option>
 									<option value="1" <?php echo $jenis == 1? 'selected':'';?>>Barang</option>
 									<option value="2" <?php echo $jenis == 2? 'selected':'';?>>Volunteer</option>

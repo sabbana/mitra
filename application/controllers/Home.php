@@ -152,9 +152,8 @@ class Home extends CI_Controller {
 	}
 	
 	public function test(){
-		$count = 12;
-		$this->load->helper("misc");
-		echo generate_code_mitra($count);
+		$this->data['page'] = 'home/geosample';
+		$this->load->view('template', $this->data);
 	}
 
 }

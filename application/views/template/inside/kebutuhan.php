@@ -19,6 +19,7 @@
 							<tr>
 								<td>No.</td>
 								<td>Kebutuhan</td>
+								<td>Jenis</td>
 								<td>Status</td>
 								<td>Aksi</td>
 							</tr>
@@ -28,6 +29,7 @@
 							<tr>
 								<td><?php echo $no;?></td>
 								<td><?php echo $keb['name'].'<br/>'.$keb['description'];?></td>
+								<td><?php generate_type_kebutuhan($keb['type']);?></td>
 								<td><?php echo $keb['status'] == 1 ? '<span class="label label-success">Terpenuhi</label>':'<span class="label label-default">Belum</label>';?></td>
 								<td width="100">
 									<span class="btn-group">

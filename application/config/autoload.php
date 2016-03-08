@@ -97,7 +97,7 @@ $autoload['helper'] = array('security','url','form');
 | config files.  Otherwise, leave it blank.
 |
 */
-$autoload['config'] = array();
+$autoload['config'] = array('config_site');
 
 /*
 | -------------------------------------------------------------------
