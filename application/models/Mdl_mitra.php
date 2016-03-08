@@ -36,7 +36,7 @@ class Mdl_mitra extends CI_Model{
 				left join kabupaten c on a.city = c.kota_id
 				left join kecamatan d on a.district = d.kecam_id
 				left join bidang e on a.field = e.id
-				where a.id = '$id'";
+				where a.username = '$id'";
 		return $this->db->query($sql)->result_array();
 	}
 	
@@ -47,7 +47,13 @@ class Mdl_mitra extends CI_Model{
 	}
 
 	public function save_community($data){
-		return $this->db->insert('community', $data);
+		$this->db->insert('community', $data);
+		$res = $this->db->insert_id();
+		return $res;
+	}
+
+	public function save_geoaddress($data){
+		return $this->db->insert('geocommunity', $data);
 	}
 
 	public function update_community($id, $data){

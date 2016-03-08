@@ -86,25 +86,31 @@
 							<label>Alamat Sekretariat</label>
 							<textarea name="alamat" class="form-control" rows="2" placeholder="Detail Lokasi"></textarea>
 						</div>
-						<h6>Logo Komunitas</h6>
+						
 						<div class="form-group">
-							<div class="note">Jenis file JPG/PNG, kurang dari 100 KB</div>
-							<input type="file" name="logo" class="form-control" class="btn">
+							<label>Google Address</label>
+							<input id="googleAddress" type="text" size="50" placeholder="Enter a location" autocomplete="on" runat="server" class="form-control"/>  
+							<input type="hidden" id="city" name="city" />
+							<input type="hidden" id="lat" name="lat" />
+							<input type="hidden" id="long" name="long" />  
 						</div>
-
+						
 					</div>
 					<div class="col-md-4 section-gray" style="padding:10px">
+						<h6>Logo Komunitas</h6>
+						<div class="form-group">
+							<div class="note">Jenis file JPG/PNG, tidak melebihi dari 100 KB</div>
+							<input type="file" name="logo" class="btn btn-block">
+						</div>
+
 						<h6>Jejaring Sosial</h6>
 						<div class="form-group">
-							<label>Facebook</label>
 							<input type="url" name="facebook" class="form-control" placeholder="Facebook Page">
 						</div>
 						<div class="form-group">
-							<label>Twitter</label>
 							<input type="url" name="twitter" class="form-control" placeholder="Twitter">
 						</div>
 						<div class="form-group">
-							<label>Google+</label>
 							<input type="url" name="google" class="form-control" placeholder="Google+">
 						</div>
 						<div class="form-group">

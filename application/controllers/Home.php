@@ -89,6 +89,18 @@ class Home extends CI_Controller {
 		
 		$act = $this->model->save_community($data);
 		if($act){
+			
+			# set location 
+			# ================================
+			$geodata = array(
+				'community_id' => $act,
+				'lat'	=> $this->input->post('lat'),
+				'long'	=> $this->input->post('long'),
+				'str_address'	=> $this->input->post('city'),
+				'last_modified' => date('Y-m-d H:i:s')
+			);
+			$this->model->save_geoaddress($geodata);
+			
 			$this->load->library('Lib_mailer');
 			$this->lib_mailer->init();
 			# message body

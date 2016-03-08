@@ -44,10 +44,10 @@ function generate_code_mitra($count){
 
 function generate_type_kebutuhan($type){
 	switch($type){
-		case 0 : return 'Dana'; break
-		case 1 : return 'Barang'; break
-		case 2 : return 'Volunteer'; break
-		case 3 : return 'Lainnya'; break
+		case 0 : return 'Dana'; break;
+		case 1 : return 'Barang'; break;
+		case 2 : return 'Volunteer'; break;
+		case 3 : return 'Lainnya'; break;
 	}
 }
 
