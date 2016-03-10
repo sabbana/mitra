@@ -4,11 +4,11 @@
         <div role="navigation" class="navbar navbar-default">
           <div class="container">
             <div class="navbar-header">
-              <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="#intro" class="navbar-brand scroll-to"><img src="<?php echo base_url().'assets/img/ib_logo.png';?>" alt="Mitra Komunitas Ilmu Berbagi Foundation"></a>
+              <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="http://www.ilmuberbagi.or.id" class="navbar-brand scroll-to"><img src="<?php echo base_url().'assets/img/ib_logo.png';?>" alt="Mitra Komunitas Ilmu Berbagi Foundation"></a>
             </div>
             <div id="navigation" class="collapse navbar-collapse">
               <ul class="nav navbar-nav navbar-right">
-                <li class="<?php echo $this->uri->segment(1) != null ? '':'active';?>"><a href="<?php echo base_url();?>#intro">Home</a></li>
+                <li class="<?php echo $this->uri->segment(1) !== "" ? '':'active';?>"><a href="<?php echo base_url();?>#intro">Home</a></li>
                 <?php if ($this->uri->segment(1) == null){?>
                 <li><a href="#about">Tentang</a></li>
                 <li><a href="#services">Manfaat</a></li>

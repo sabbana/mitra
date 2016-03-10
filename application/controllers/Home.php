@@ -20,6 +20,28 @@ class Home extends CI_Controller {
 
 	public function index() {
 		$this->data['page'] = 'home/home';
+		$this->data['community'] = $this->model->getAllCommunity();
+		$marker = $this->model->getGeocommunity();
+		$listMarker = array();
+		$listMarker[0] = array(
+			"-7.7559607", "110.3785723", "<div class='geotitle'><a href='".base_url('community/MIBF20160001')."'><b>Rumah Ilmu Berbagi</b></a></div><div class='geocontent'>Jl.Pandegasiwi no.14, Kaulirang KM.5,6 Kec.Depok, Sleman, Jogjakarta 55281</div></div>"
+		);
+		if(!empty($marker)){
+			$x = 1;
+			foreach ($marker as $m){
+				$desc = '<div class="geotitle"><a href="'.base_url().'community/'.$m['username'].'"><b>'.$m['name'].'</b></a></div><div class="geocontent">'.$m['address'].'</div>';
+				$listMarker[$x] = array(
+					$m['lat'], $m['long'], $desc
+				);
+				$x++;
+			}
+		}
+		$this->data['listMarker'] = json_encode($listMarker);
+		
+		$this->data['kegiatan'] = $this->model->activities();
+		$this->data['kebutuhan'] = $this->model->requirement();
+		$this->data['agenda'] = $this->model->agenda();
+
         $this->load->view('template', $this->data);
     }
 	
@@ -41,7 +63,6 @@ class Home extends CI_Controller {
 		$email_community = $this->input->post('email');
 		$date = $this->input->post('founding_date');
 		$newDate = str_replace('/','-', $date);
-		$this->load->helper('misc');
 		$pass = generatePassword(8,4);
 		
 		$count = $this->model->count_mitra_per_year();

@@ -28,12 +28,17 @@ class Auth extends CI_Controller {
 					'id'			=> $data['id'],
 					'email'			=> $data['email'],
 					'username'		=> $username,
-					'name'			=> $data['name'],
+					'name'			=> $data['name'],										
+					'privilage'		=> $data['level'],
+					'logo'			=> $data['logo'],
 					'logged'		=> 1,
 				);
 				$this->session->set_userdata($create_session);
+				if($data['level'] == 1)
+					redirect('admin');
+				else
+					redirect('inside');
 			}
-			redirect('inside');
 		}
 		else{			
 			$this->session->set_flashdata('error','Username dan atau password tidak valid!');

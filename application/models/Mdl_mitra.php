@@ -80,7 +80,7 @@ class Mdl_mitra extends CI_Model{
 	public function getRekening($id = null){
 		$sql = "select a.*, b.name as nama_komunitas from community_account a left join community b on a.community_id = b.id order by date_input DESC";
 		if($id != null)		
-			$sql = "select a.*, b.name as nama_komunitas from community_account a left join community b on a.community_id = b.id where username = '$id' order by date_input DESC";
+			$sql = "select a.*, b.name as nama_komunitas from community_account a left join community b on a.community_id = b.id where a.community_id = '$id' order by date_input DESC";
 		
 		return $this->db->query($sql)->result_array();
 	}
@@ -107,7 +107,7 @@ class Mdl_mitra extends CI_Model{
 	# model activity
 	# ===============================
 	public function activities($community_id = null){
-		$sql = "select a.*, b.name as nama_komunitas from daily_activity a left join community b on a.community_id = b.id order by date_input ASC";
+		$sql = "select a.*, b.name as nama_komunitas, b.username from daily_activity a left join community b on a.community_id = b.id order by date_input ASC";
 		if ($community_id !== null)
 			$sql = "select * from daily_activity where community_id = '$community_id' order by date_input ASC";
 		return $this->db->query($sql)->result_array();

@@ -36,7 +36,7 @@ class Inside extends CI_Controller {
 			$this->data['page'] = 'inside/form_community';
 		}
 		
-		$this->data['komunitas'] = $this->model->currentCommunity($this->session->userdata('id'));
+		$this->data['komunitas'] = $this->model->currentCommunity($this->session->userdata('username'));
 		$this->load->view('template', $this->data);
 	}
 	

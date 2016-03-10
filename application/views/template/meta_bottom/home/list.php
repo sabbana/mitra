@@ -8,6 +8,5 @@
 		$(".data-tables").DataTable({
 			scrollX : false,
 		});
-	});
-		
+	});		
 </script>

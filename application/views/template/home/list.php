@@ -6,9 +6,16 @@
 					<h2 class="heading">Mitra Komunitas</h2>
 					<div id="map_canvas" style="width:100%; height:400px"></div>
 				</div>
-				
-				<hr/>
-				<!-- agenda dan kebutuhan komunitas -->
+			</div>
+		</div>
+	</div>
+</div>
+<!-- agenda dan kebutuhan komunitas -->
+<div class="section">
+	<div class="content">
+		<div class="container">
+			<div class="row">
+				<br/>
 				<div class="col-md-6">
 					<ul class="list-group">
 						<li class="list-group-item list-title"><i class="fa fa-calendar"></i> Agenda</li>

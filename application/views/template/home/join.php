@@ -88,8 +88,8 @@
 						</div>
 						
 						<div class="form-group">
-							<label>Google Address</label>
-							<input id="googleAddress" type="text" size="50" placeholder="Enter a location" autocomplete="on" runat="server" class="form-control"/>  
+							<label><b>Google Address</b> <span>*</span></label>
+							<input id="googleAddress" type="text" size="50" placeholder="Masukkan Alamat Kota atau Jalan" autocomplete="on" runat="server" class="form-control" required />  
 							<input type="hidden" id="city" name="city" />
 							<input type="hidden" id="lat" name="lat" />
 							<input type="hidden" id="long" name="long" />  
@@ -100,7 +100,7 @@
 						<h6>Logo Komunitas</h6>
 						<div class="form-group">
 							<div class="note">Jenis file JPG/PNG, tidak melebihi dari 100 KB</div>
-							<input type="file" name="logo" class="btn btn-block">
+							<input type="file" name="logo" class="form-control">
 						</div>
 
 						<h6>Jejaring Sosial</h6>

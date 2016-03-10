@@ -1,5 +1,9 @@
+	<div id="intro" style="padding:10px">
+		<h2 class="heading">Mitra Komunitas<div style="font-size:14px">Ilmu Berbagi Foundation</div></h2>
+		<div class="row" id="map_canvas" style="min-height:400px"></div>
+	</div>
     <!-- intro-->
-    <section id="intro" class="intro image-background">
+    <section id="about" class="intro image-background">
       <div class="overlay"></div>
       <div class="content">
         <div class="container clearfix">
@@ -11,10 +15,10 @@
             </div>
           </div>
         </div>
-      </div><a href="#about" class="icon faa-float animated scroll-to"><i class="fa fa-angle-double-down"></i></a>
+      </div><a href="#aboutDesc" class="icon faa-float animated scroll-to"><i class="fa fa-angle-double-down"></i></a>
     </section>
     <!-- about us-->
-    <section id="about">
+    <section id="aboutDesc">
       <div class="container clearfix">
         <div class="row margin-bottom">
           <div class="col-md-6 margin-bottom"> 
@@ -77,7 +81,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <h2 class="heading">Mitra Komunitas</h2>
+            <h2 class="heading">Mitra Komunitas<div style="font-size:14px"><a href="<?php echo base_url().'community';?>">Lihat daftar Mitra Selengkapnya...</a></div></h2>
             <div class="row"></div>
             <!-- team-member-->
             <div class="col-md-3 col-sm-6">
@@ -149,14 +153,36 @@
             <!-- team-member col end-->
           </div>
         </div>
+		<div class="row">
+			<h5 class="heading">Agenda dan Kegiatan Mitra Komunitas</h5>
+			<?php if(!empty($kegiatan)){foreach($kegiatan as $keg){?>
+			<div class="col-md-3 col-sm-6">
+				<div class="panel panel-primary" style="height:200px; overflow:auto">
+					<div class="panel-heading"><?php echo $keg['name'];?></div>
+					<div class="panel-body"><?php echo $keg['description'];?><br/><a href="<?php echo base_url().'community/'.$keg['username'];?>">Selengkapnya &raquo;</a></div>
+				</div>
+			</div>
+			<?php }} ?>
+		</div>
+		
+		<div class="row">
+			<h5 class="heading">Kebutuhan Mitra Komunitas</h5>
+			<?php if(!empty($kebutuhan)){foreach($kebutuhan as $keb){?>
+			<div class="col-md-3 col-sm-6">
+				<div class="panel panel-primary" style="height:200px; overflow:auto">
+					<div class="panel-heading"><?php echo $keb['name'];?></div>
+					<div class="panel-body"><?php echo $keb['description'];?><br/><a href="<?php echo base_url().'community/'.$keb['username'];?>">Selengkapnya &raquo;</a></div>
+				</div>
+			</div>
+			<?php }} ?>
+		</div>
+		
+		
       </div>
-		<center> <H3> <a href="<?php echo base_url().'community';?>">Lihat daftar Mitra Komunitas selengkapnya... </a></H3> </center>
 
     </section>
-    
-    <!-- map-->
-    <section id="map"></section>
-    <section id="contact" class="gray-section contact">
+
+    <section id="contact" class="section-gray contact">
     <div class="container">
         <div class="row m-b-lg">
             <div class="col-lg-12 text-center">

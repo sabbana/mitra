@@ -12,11 +12,11 @@
 							<?php echo $community[0]['email'] ? '<a href="mailto:'.$community[0]['email'].'"><i class="fa fa-envelope"></i></a>':'';?>
 						</span>
 						<?php if(!empty($rekening)){ ?>
-							<a href="<?php echo base_url().'community/donate';?>" class="btn btn-success btn-block">DONASI</a>
+							<a href="#" data-toggle="modal" data-target="#modalDonate" class="btn btn-success btn-block">DONASI</a>
 							<?php foreach ($rekening as $rek){?>
 								<hr/>
 								Bank <?php echo $rek['bank'];?><br/>
-								No.Rek <?php echo $rek['number'];?><br/>
+								No.Rek <b><?php echo $rek['number'];?></b><br/>
 								A/n <?php echo $rek['name'];?>
 							<?php } ?>
 						<?php } ?>
@@ -61,8 +61,6 @@
 								<div class="col-md-6">
 									<h6 class="">Bidang</h6>
 									<?php echo $community[0]['nama_bidang'];?>
-									<h6 class="">Tentang Komumitas</h6>
-									<?php echo $community[0]['description'];?>
 									<h6 class="">Sosial Media</h6>
 									<?php echo $community[0]['facebook'] ? '<i class="fa fa-facebook-square"></i> '.$community[0]['facebook'].'<br/>':'';?>
 									<?php echo $community[0]['twitter'] ? '<i class="fa fa-twitter-square"></i> '.$community[0]['twitter'].'<br/>':'';?>
@@ -111,3 +109,72 @@
 		</div>		
 	</div>
 </div>
+
+<!-- modal delete media -->
+<div class="modal inmodal" id="modalDonate" tabindex="-1" aria-hidden="true" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content animated fadeInRight">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">
+				<span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+				<i class="fa fa-money modal-icon"></i>
+				<h4 class="modal-title">Donasi</h4>
+				<div class="font-bold">Konfimasi Donasi</div>
+			</div>
+			<form action="" method="POST">
+				<div class="modal-body">
+					
+					<div class="form-group">
+						<label>Nama Donatur <span>*</span></label>
+						<input type="text" name="donatur" class="form-control" placeholder="Nama Donatur">
+					</div>
+					<div class="form-group">
+						<label>Email <span>*</span></label>
+						<input type="email" name="email" class="form-control" placeholder="Email">
+					</div>
+					<div class="form-group">
+						<label>Jenis Donasi <span>*</span></label>
+						<select name="jenis" class="form-control type" required>
+							<option value="">- Jenis Donasi -</option>
+							<option value="0">Dana/Uang</option>
+							<option value="1">Barang</option>
+							<option value="2">Volunteer</option>
+							<option value="3">Lainnya</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<div class="input-group pilihan" id="dana">
+							<span class="input-group-addon">
+								<select name="mata_uang" style="font-size:0.8em">
+									<option value="RP">RP</option>
+									<option value="USD">USD</option>
+									<option value="WON">WON</option>
+								<select>
+							</span>
+							<input type="text" name="jumlah" class="form-control" placeholder="Masukkan Jumlah">
+						</div>
+						<div class="pilihan" id="barang">
+							<input type="text" name="nama_barang" class="form-control" placeholder="Masukkan Nama Barang">
+						</div>
+						<div class="pilihan" id="volunteer">
+							<input type="text" name="jumlah" class="form-control" placeholder="Jumlah">
+						</div>
+						<div class="pilihan" id="lain">
+							<input type="text" name="lain" class="form-control" placeholder="Masukkan Keterangan Donasi">
+						</div>
+					</div>
+					<div class="form-group">
+						<label>Tanggal Donasi <span>*</span></label>
+						<input type="text" name="tanggal" class="form-control datepicker" placeholder="Tanggal Donasi">
+					</div>
+
+				</div>
+				<div class="modal-footer">
+					<input type="reset" name="reset" value="Cancel" class="btn btn-white" data-dismiss="modal">
+					<input type="submit" name="submit" value="OK" class="btn btn-success">
+				</div>
+			</form>
+		</div>	
+	</div>
+</div>
+
